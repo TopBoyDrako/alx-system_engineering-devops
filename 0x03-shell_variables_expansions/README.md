@@ -6,3 +6,4 @@ Task 1-hell
 5-local-variables
 6-create-local-variabl
 7-create-global-variablee
+8-true-_knowledge
