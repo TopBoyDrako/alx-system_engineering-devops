@@ -10,3 +10,4 @@ Task 1-hell
 9-divide-and-rule
 10-love-exponent-breath
 11-binary_to-decimal
+12-combinations
