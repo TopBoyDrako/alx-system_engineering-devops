@@ -12,3 +12,4 @@ Task 1-hell
 11-binary_to-decimal
 12-combinations
 13-print-float
+100-decimal_to_hexadecimal
