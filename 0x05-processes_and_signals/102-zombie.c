@@ -28,8 +28,6 @@ int main(void)
             exit(0);
     }
 
-    infinite_while();
-
-    return (0);
+    return infinite_while(); // Call the infinite_while function to keep the main process alive.
 }
 
