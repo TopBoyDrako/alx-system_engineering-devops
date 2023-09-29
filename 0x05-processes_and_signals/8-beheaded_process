@@ -1,0 +1,6 @@
+#!/bin/bash
+# Get the PID of the 7-highlander process
+pid=$(pgrep -f '7-highlander')
+
+# Send a SIGKILL signal to forcefully terminate the process
+kill -9 "$pid"
