@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script displays the content of /etc/passwd with specific information.
 
-while IFS=':' read -r username x uid gid gecos home shell
+while IFS=':' read -r username _ uid gid gecos home shell
 do
     echo "Username: $username"
     echo "User ID: $uid"
