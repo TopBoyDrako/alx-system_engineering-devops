@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Get the PID of the current script
+script_pid=$$
+
+# Find processes with "bash" in their name and filter out the grep command itself
+while read -r line; do
+    pid=$(echo "$line" | awk '{print $1}')
+    process_name=$(echo "$line" | awk '{print $NF}')
+    echo "$pid $process_name"
+done < <(pgrep -af bash | grep -v "grep\|3-show_your_bash_pid_made_easy")
