@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-#Writing a story for /etc/passwd
-while IFS=':' read -r username x uid gid gecos home shell
-do
-    echo "The user $username is part of the gang with Group ID $gid, lives in $home and rides $shell. User ID's place is protected by the passcode $x, more info about the user here: $gecos"
-done < /etc/passwd
-
