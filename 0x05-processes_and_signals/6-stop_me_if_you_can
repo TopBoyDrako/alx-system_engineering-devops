@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# Get the PID of the 4-to_infinity_and_beyond process
-pid=$(pgrep -f '4-to_infinity_and_beyond')
-
-# Send a SIGTERM signal to gracefully terminate the process
-kill -15 "$pid"
-

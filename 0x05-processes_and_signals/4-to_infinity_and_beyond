@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# This script displays a message to infinity but can be terminated
-while true; do
-    echo "To infinity and beyond"
-    sleep 2
-done
