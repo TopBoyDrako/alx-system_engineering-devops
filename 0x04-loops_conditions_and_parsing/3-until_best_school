@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#This file uses the until loop to display a string 10 times
+
+i=1
+
+until [ $i -ge 10 ];
+do
+    echo "Best School"
+    ((i++))
+done
