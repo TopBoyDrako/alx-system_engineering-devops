@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#This file stops / kills a process on a diferent file
+
+pkill -f beyond
