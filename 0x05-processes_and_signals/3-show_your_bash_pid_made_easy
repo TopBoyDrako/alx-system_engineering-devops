@@ -2,9 +2,4 @@
 #This file displays the PID along with the process name of processes
 #whose name contain the word bash
 
-pids=$(pgrep -f "bash")
-
-for pid in $pids; do
-    p_name=$(tr -d '\O' < "/proc/$pid/cmdline" | awk '{print $1}' | sed 's/\x0/ /g')
-    echo "$pid $p_name"
-done
+pgrep -l bash
