@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#This file kills a process on another file
+
+pkill -9 -f highlander
