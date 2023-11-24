@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#This file runs an infinite loop that sleeps after every
+#iteration
+
+i=1
+
+trap 'echo "I am invicible!!!"' 15
+while [ $i -gt 0 ];
+do
+    echo "To infinity and beyond"
+
+    sleep 2
+done
