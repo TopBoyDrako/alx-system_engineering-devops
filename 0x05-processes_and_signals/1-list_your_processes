@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #this file lists all processes currently running
 
-ps aux
+ps aux --forest
