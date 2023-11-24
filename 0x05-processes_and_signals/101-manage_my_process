@@ -14,8 +14,6 @@ case "$command" in
     if [ -e "$pid_file" ]; then
       pkill -f './manage_my_process' && rm "$pid_file"
       echo "manage_my_process stopped"
-    else
-      echo "manage_my_process is not running"
     fi
     ;;
   restart)
