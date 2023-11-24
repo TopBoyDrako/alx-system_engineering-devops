@@ -1,31 +1,29 @@
 #!/usr/bin/env bash
 #This file works with the start, stopand restart process
 
-cmd="$1"
+command="$1"
+pid_file="/var/run/my_process.pid"
 
-if [ -r "$cmd" ];
-then
-    echo "Usage: manage_my_process {start|stop|restart}"
-fi
-
-if [ "$cmd" == "start" ];
-then
-    bash ./manage_my_process.pid
-    echo "$!" > /var/run/my_process.pid
+case "$command" in
+  start)
+    bash ./manage_my_process &
+    echo "$!" > "$pid_file"
     echo "manage_my_process started"
-
-elif [ "$cmd" == "stop" ];
-then
-    [ -e "/var/run/my_process.pid" ] && pkill -f /
-    './manage_my_process' && rm /var/run/my_process.pid
-    echo "manage_my_process stopped"
-
-elif [ "$cmd" == "restart" ];
-then
+    ;;
+  stop)
+    if [ -e "$pid_file" ]; then
+      pkill -f './manage_my_process' && rm "$pid_file"
+      echo "manage_my_process stopped"
+    else
+      echo "manage_my_process is not running"
+    fi
+    ;;
+  restart)
     "$0" stop >& /dev/null
     "$0" start >& /dev/null
     echo "manage_my_process restarted"
-
-else
-    echo "Usage: manage_my_process {start|stop|restart}"
-fi
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    ;;
+esac
