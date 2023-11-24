@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 #Here we do simply parsing of an apache-access.log file
 
-file="apache-access.log"
-
-awk '{print $!,$9}' "$file"
+awk '{print $!,$9}' "apache-access.log"
