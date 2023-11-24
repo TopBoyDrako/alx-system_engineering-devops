@@ -4,7 +4,7 @@
 
 i=1
 
-trap 'echo "I am invicible!!!"' 15
+trap 'echo "I am invincible!!!"' -15
 while [ $i -gt 0 ];
 do
     echo "To infinity and beyond"
