@@ -6,31 +6,27 @@
 int infinite_while(void);
 
 /**
- * main - Creates 5 zombie processes and calls infinite_while
- * Return: Always 0
- */
+* main - Creates 5 zombie processes and calls infinite_while
+* Return: Always 0
+*/
+
 int main(void)
 {
-	for (int i = 0; i < 5; i++)
+	int i = 0;
+	pid_t pid;
+
+	while (i < 5)
 	{
-		pid_t child_pid = fork();
-
-		if (child_pid == -1)
-		{
-			perror("Fork failed");
-			exit(EXIT_FAILURE);
-		}
-
-		if (child_pid == 0)
-		{
-			printf("Zombie process created, PID: %d\n", getpid());
-			exit(EXIT_SUCCESS);
-		}
+		pid = fork();
+		if (!pid)
+			break;
+		printf("Zombie process created, PID: %d\n", (int)pid);
+		i++;
 	}
-
-	infinite_while();
-
+	if (pid != 0)
+		infinite_while();
 	return (0);
+
 }
 
 /**
