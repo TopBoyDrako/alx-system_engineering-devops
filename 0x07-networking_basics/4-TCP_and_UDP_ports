@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This files answers question TCP and UDP Ports
+
+netstat -l
