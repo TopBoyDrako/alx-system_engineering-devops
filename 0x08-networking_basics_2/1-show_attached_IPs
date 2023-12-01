@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#displays all ipv4 on this machine
+
+hostname -I | awk '{print $1}'
