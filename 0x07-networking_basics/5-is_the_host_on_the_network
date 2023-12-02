@@ -4,7 +4,7 @@
 ip="${1}"
 fn=$(basename "${BASH_SOURCE[@]}")
 
-if [ $# -eq 0 ];
+if [ -z "$ip" ];
 then
     echo "Usage: ${fn} {IP_ADRDRESS}"
 else
