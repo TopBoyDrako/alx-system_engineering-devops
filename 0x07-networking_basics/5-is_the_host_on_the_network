@@ -6,7 +6,7 @@ fn=$(basename "${BASH_SOURCE[@]}")
 
 if [ -z "$ip" ];
 then
-    echo "Usage: ${fn} {IP_ADRDRESS}"
+    echo "Usage:${fn} {IP_ADRDRESS}"
 else
     ping -c 5 "${ip}"
 fi
