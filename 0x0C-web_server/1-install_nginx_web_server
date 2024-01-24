@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # This script is used to install nginx
 
-apt-get update
-apt-get -y install nginx
-echo "Hello World!" > /var/www/html/index.html
-service nginx start
+sudo apt-get update -y
+sudo apt-get install nginx -y
+sudo service nginx start
+sudo update-rc.d nginx defaults
+sudo sed -i 's/listen 80 default_server;listen 80;/g' /etcnginx/sites-available/default
+echo "<html><body>Hello World!</body></html>" | sudo tee /var/www/html/index.html
