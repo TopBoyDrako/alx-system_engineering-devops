@@ -3,5 +3,8 @@
 
 apt-get update
 apt-get install -y nginx
-echo "Hello World!" > /var/www/html/index.html
 service nginx start
+update-rc.d nginx defaults
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+service nginx restart
+echo "<html><body>Hello World!</body></html>" | tee /var/www/html/index.html
