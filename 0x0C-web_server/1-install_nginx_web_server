@@ -8,7 +8,6 @@ echo <<EOL | root hello.html
 <head>
     <title></title>
 </head>
-</html>
 
 EOL
 
