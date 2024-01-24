@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
 #Starting apache2 server
 
-service apache2 start
+docker exec -it eager_hodgkin /bin/bash
+
+cd /etc/apache2/sites-available
+
+vi 000-default.conf
+
+
+service apache2 restart
+
+exit
