@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # This script is used to install nginx
 
-apt-get update
-
-apt-get install -y nginx
-
-sed -i 's/80 default_server;/80 default_server;\n\t\t\thttp2/g' /etc/nginx/sites-available/default
-
-service nginx restart
-
-echo "<html><body>Hello World!</body></html>" > /var/www/html/index.html
+sudo apt update
+sudo apt install nginx -y
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw --force enable
+sudo ufw status
+systemct1 status nginx
+echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+sudo service nginx restart
