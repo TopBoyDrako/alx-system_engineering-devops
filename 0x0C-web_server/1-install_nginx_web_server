@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 # This script is used to install nginx
 
-apt-get update -y
+apt-get update
 
 apt-get install -y nginx
 
-service nginx start
-update-rc.d nginx defaults
-
-sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+sed -i 's/80 default_server;/80 default_server;\n\t\t\thttp2/g' /etc/nginx/sites-available/default
 
 service nginx restart
 
-echo "<html><body>Hello World!</body></html>" | tee /var/www/html/index.html
+echo "<html><body>Hello World!</body></html>" > /var/www/html/index.html
