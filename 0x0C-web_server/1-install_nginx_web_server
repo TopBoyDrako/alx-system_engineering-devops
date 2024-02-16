@@ -20,7 +20,7 @@ systemctl status nginx
 echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
 
 # Restart the Nginx service
-sudo systemctl restart nginx
+sudo service nginx restart
 
 # Check if Nginx is returning the correct response at the root URL
 response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/)
