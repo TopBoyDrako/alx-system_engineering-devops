@@ -1,24 +1,32 @@
-#!/usr/bin/env bash
-# script to install and setup nginx
-CONFIG_FILE="/etc/nginx/sites-available/default"
-# install nginx
-apt-get -y update
-apt-get -y install nginx
+#!/bin/env bash
+# Install Nginx if not already installed
 
-# update index.html file
-echo 'Hello World!' > /usr/share/nginx/html/index.html
+if ! command -v nginx &> /dev/null; then
+    apt update
+    apt install nginx -y
+fi
 
-# update config file to redirect
-printf %s "server {
+# Configure Nginx to perform the redirection
+cat <<EOF > /etc/nginx/sites-available/redirect_me
+server {
     listen 80;
-    listen [::]:80 default_server;
-    root   /usr/share/nginx/html;
-    index  index.html index.htm;
+    server_name localhost;
 
     location /redirect_me {
-        return 301 http://google.com/;
+        return 301 https://example.com/new_page;
     }
-}" > $CONFIG_FILE
 
-# start nginx after reloading config
-service nginx start
+    location / {
+        return 404;
+    }
+}
+EOF
+
+# Create a symbolic link to enable the configuration
+ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
+
+# Test Nginx configuration
+nginx -t
+
+# Restart Nginx to apply changes
+service nginx restart
