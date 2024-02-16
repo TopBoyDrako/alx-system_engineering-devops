@@ -8,5 +8,5 @@ sudo ufw allow 80
 sudo ufw --force enable
 sudo ufw status
 systemct1 status nginx
-echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+echo 'Hello World!' | sudo tee /var/www/html/index.html > /dev/null
 sudo service nginx restart
