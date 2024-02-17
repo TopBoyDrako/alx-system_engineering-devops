@@ -1,32 +1,24 @@
-#!/bin/env bash
-# Install Nginx if not already installed
+#!/usr/bin/env bash
+# script to install and setup nginx
+CONFIG_FILE="/etc/nginx/sites-available/default"
+# install nginx
+apt-get -y update
+apt-get -y install nginx
 
-if ! command -v nginx &> /dev/null; then
-    apt update
-    apt install nginx -y
-fi
+# update index.html file
+echo 'Holberton School' > /usr/share/nginx/html/index.html
 
-# Configure Nginx to perform the redirection
-cat <<EOF > /etc/nginx/sites-available/redirect_me
-server {
+# update config file to redirect
+printf %s "server {
     listen 80;
-    server_name localhost;
+    listen [::]:80 default_server;
+    root   /usr/share/nginx/html;
+    index  index.html index.htm;
 
     location /redirect_me {
-        return 301 https://example.com/new_page;
+        return 301 http://google.com/;
     }
+}" > $CONFIG_FILE
 
-    location / {
-        return 404;
-    }
-}
-EOF
-
-# Create a symbolic link to enable the configuration
-ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
-
-# Test Nginx configuration
-nginx -t
-
-# Restart Nginx to apply changes
-service nginx restart
+# start nginx after reloading config
+service nginx start
