@@ -1,24 +1,12 @@
 #!/usr/bin/env bash
-# script to install and setup nginx
-CONFIG_FILE="/etc/nginx/sites-available/default"
-# install nginx
-apt-get -y update
-apt-get -y install nginx
+# This script installs a nginx web server
 
-# update index.html file
-echo 'Hello World!' > /usr/share/nginx/html/index.html
-
-# update config file to redirect
-printf %s "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root   /usr/share/nginx/html;
-    index  index.html index.htm;
-
-    location /redirect_me {
-        return 301 http://google.com/;
-    }
-}" > $CONFIG_FILE
-
-# start nginx after reloading config
-service nginx start
+sudo apt update
+sudo apt install nginx -y
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw --force enable
+sudo ufw status
+systemctl status nginx
+echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+sudo service nginx restart
