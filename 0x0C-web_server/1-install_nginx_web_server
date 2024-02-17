@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
-# This script installs a nginx web server
+#Install NGINEX
 
-sudo apt update
-sudo apt install nginx -y
-sudo ufw allow 22
-sudo ufw allow 80
-sudo ufw --force enable
-sudo ufw status
-systemctl status nginx
-echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo echo "Holberton School"  > /var/www/html/index.nginx-debian.html
 sudo service nginx restart
