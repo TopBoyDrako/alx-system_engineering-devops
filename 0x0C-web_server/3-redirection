@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # script to install and setup nginx
 CONFIG_FILE="/etc/nginx/sites-available/default"
-
 # install nginx
 apt-get -y update
 apt-get -y install nginx
@@ -17,10 +16,9 @@ printf %s "server {
     index  index.html index.htm;
 
     location /redirect_me {
-        return 301 http://example.com/new_page; # Update to the correct URL
+        return 301 http://google.com/;
     }
 }" > $CONFIG_FILE
 
-# Reload Nginx to apply the new configuration
-nginx -s reload
-
+# start nginx after reloading config
+service nginx start
