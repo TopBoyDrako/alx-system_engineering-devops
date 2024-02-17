@@ -21,4 +21,4 @@ printf %s "server {
 }" > $CONFIG_FILE
 
 # start nginx after reloading config
-service nginx reload
+service nginx start
