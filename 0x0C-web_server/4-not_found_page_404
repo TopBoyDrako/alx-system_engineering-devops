@@ -5,7 +5,7 @@ apt-get update
 apt-get install -y nginx
 service nginx start
 mkdir /etc/nginx/html
-echo "Holberton School" > /etc/nginx/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
 echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 echo "server {
     listen 80;
