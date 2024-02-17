@@ -6,7 +6,7 @@ apt-get -y update
 apt-get -y install nginx
 
 # update index.html file
-echo 'Holberton School' > /usr/share/nginx/html/index.html
+echo 'Hello World!' > /usr/share/nginx/html/index.html
 
 # update config file to redirect
 printf %s "server {
