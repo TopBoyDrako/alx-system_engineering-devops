@@ -39,7 +39,7 @@ frontend www-http
         default_backend www-backend
 
 frontend www-https
-        bind    0.0.0.0:443 ssl crt /etc/letsencrypt/live/www.princethedev.tech/fullchain.pem
+        bind    *:443 ssl crt /etc/haproxy/certs/www.princethedev.tech.pem
         http-request add-header X-Forwarded-Proto https
         acl     letsencrypt-acl path_beg /.well-known/acme-challenge/
         use_backend     letsencrypt-backend if letsencrypt-acl      
