@@ -10,12 +10,16 @@ def number_of_subscribers(subreddit):
     """
     This function queries the reddit api to get the total amount of subcribers
     """
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    headers = {"User-Agent": "My-User-Agent"}
 
-    info = requests.get("https://www.reddit.com/r/{}/about.json"
-                            .format(subreddit),
-                            headers={"User-Agent": "My-User-Agent"},
-                            allow_redirects=False)
-    if info.status_code >= 300:
+    try:
+        response = requests.get(url, headers=headers, allow_redirects=False)
+        if response.status_code >= 300:
+            return 0
+        else:
+            data = response.json()
+            return data.get("data", {}).get("subscribers", 0)
+    except Exception as e:
+        print(f"Error: {e}")
         return 0
-
-    return info.json().get("data").get("subscribers")
