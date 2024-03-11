@@ -3,9 +3,8 @@
 This module reurns personal information of a todo list For a
 given employee ID. Gives info on their TODO list progress
 """
-
-import requests
-import sys
+from requests import get
+from sys import argv
 
 
 if __name__ == "__main__":
